@@ -10,6 +10,7 @@ class Size extends React.Component {
 			let sizes = products.reduce((acc, v) => {
 				return [...acc, ...v.availableSizes]
 			}, [])
+
 			this.props.dispatch({
 				type: 'ADD_SIZES', 
 				sizes: [...new Set(sizes)].map(s => ({
@@ -18,6 +19,9 @@ class Size extends React.Component {
 				}))
 			})
 		})
+	}
+	handleButton = (size) => {
+		this.props.dispatch({type: 'TOGGLE', currentSize: size})
 	}
 
 	render() {
@@ -28,7 +32,7 @@ class Size extends React.Component {
 				<div className="sizes">
 					{
 						this.props.sizes.map(d => 
-						<li>{d.size}</li>
+						<button className={d.isClicked ? 'size-btn active' : 'size-btn'} onClick={() => this.handleButton(d.size)}>{d.size}</button>
 						)
 					}
 				</div>
