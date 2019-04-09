@@ -3,6 +3,7 @@ import './App.scss';
 import Item from './Item.js';
 import Size from './Size.js';
 import {connect} from 'react-redux';
+import Header from './Header';
 
 
 class App extends Component {
@@ -18,6 +19,7 @@ class App extends Component {
   render() {
     return (
       <div className="super">
+        <Header />
         <section className="shop-container">
           <Size />
           <Item />

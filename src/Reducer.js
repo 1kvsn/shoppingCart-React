@@ -3,7 +3,11 @@ export function products(state=[], action) {
 	switch (action.type) {
 		case "ADD_PRODUCTS":
 			return action.products;
-		default:
+		case "LOW_TO_HIGH":
+			return [...state.sort((a,b) => a.price - b.price)]
+		case "HIGH_TO_LOW":
+			return [...state.sort((a,b) => b.price - a.price)]
+			default:
 			return state;
 	}
 

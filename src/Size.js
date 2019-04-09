@@ -26,7 +26,7 @@ class Size extends React.Component {
 	}
 
 	render() {
-		const {products} = this.props;
+		// const {products} = this.props;
 		return (
 			<div className="size-container">
 				<h3>Sizes:</h3>
