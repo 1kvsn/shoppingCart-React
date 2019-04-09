@@ -20,6 +20,7 @@ class Size extends React.Component {
 			})
 		})
 	}
+	
 	handleButton = (size) => {
 		this.props.dispatch({type: 'TOGGLE', currentSize: size})
 	}

@@ -15,13 +15,6 @@ class App extends Component {
     })
   }
 
-  // fetch("https://react-shopping-cart-67954.firebaseio.com/products.json")
-  //   .then(res => res.json())
-  //   .then(d => this.setState({
-  //     products: d.products,
-  //     })
-  //   )
-
   render() {
     return (
       <div className="super">

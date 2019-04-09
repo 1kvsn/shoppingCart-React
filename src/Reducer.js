@@ -10,7 +10,6 @@ export function products(state=[], action) {
 }
 
 export function sizes(state=[], action) {
-	console.log(state, "this is state", action)
 	switch (action.type) {
 		case "ADD_SIZES":
 			return action.sizes;
@@ -24,8 +23,4 @@ export function sizes(state=[], action) {
 		default:
 			return state;
 	}
-}
-
-export function sizeFilter() {
-	
 }
