@@ -176,6 +176,20 @@ h6 {
 // 	margin: 0 auto;
 // }
 
+// Header Styles
+
+.header-container {
+	display: flex;
+	justify-content: flex-end;
+
+	img {
+		width: 40px;
+		height: 40px;
+		background-color: black;
+		
+	}
+}
+
 .shop-container {
 	display: flex;
 	max-width: 1000px;
@@ -282,4 +296,18 @@ h6 {
 }
 .active {
 	background-color: tomato;
+}
+
+// Slider Cart Styles
+
+.cart-container {
+	position: relative;
+
+	.cart-item {
+		width: 400px;
+		height: 100%;
+		position: fixed;
+		right: 0;
+		background-color: lightgrey;
+	}
 }

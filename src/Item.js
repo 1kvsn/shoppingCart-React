@@ -7,6 +7,10 @@ class Item extends React.Component {
 	handleChange = (e) => {
 		(e.target.value === "Lowest to Highest") ? this.props.dispatch({type: "LOW_TO_HIGH"}) : this.props.dispatch({type: "HIGH_TO_LOW"})
 	}
+	handleAddToCart = (products) => {
+		console.log('handleAddCart', products);
+		this.props.dispatch({type: "ADD_TO_CART", products})
+	}
 	
 	render() {
 		const filterSizes = this.props.sizes.filter(size => size.isClicked === true).map(val => val.size)
@@ -45,7 +49,7 @@ class Item extends React.Component {
 													<p className="installment">or {elem.installments} x</p>
 													<p className="installment-price">${(elem.price/elem.installments).toFixed(2)}</p>
 												</span>
-												<button>Add to Cart</button>
+												<button onClick={() => {console.log('onclick'); this.handleAddToCart(elem)}}>Add to Cart</button>
 											</div>
 										)}
 									)
@@ -62,7 +66,7 @@ class Item extends React.Component {
 												<p className="installment">or {elem.installments} x</p>
 												<p className="installment-price">${(elem.price/elem.installments).toFixed(2)}</p>
 											</span>
-											<button>Add to Cart</button>
+											<button onClick={() => {console.log('onclick',elem); this.handleAddToCart(elem)}}>Add to Cart</button>
 										</div>
 									)
 								})

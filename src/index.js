@@ -6,11 +6,12 @@ import * as serviceWorker from './serviceWorker';
 import {Provider} from 'react-redux';
 // import store from './App';
 import {createStore, combineReducers} from 'redux';
-import {products, sizes} from './Reducer';
+import {products, sizes, cart} from './Reducer';
 
 const root = combineReducers({
 	products,
-	sizes
+	sizes,
+	cart
 })
 
 

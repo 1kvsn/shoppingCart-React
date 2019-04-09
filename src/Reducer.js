@@ -28,3 +28,14 @@ export function sizes(state=[], action) {
 			return state;
 	}
 }
+
+export function cart(state = [], action) {
+	console.log('item received', state, action)
+	switch(action.type) {
+		case 'ADD_TO_CART': {
+			return [...state, action.products]
+		}
+		default: 
+			return state;
+	}
+}
