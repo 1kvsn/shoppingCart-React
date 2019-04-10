@@ -35,6 +35,10 @@ export function cart(state = [], action) {
 		case 'ADD_TO_CART': {
 			return [...state, action.products]
 		}
+		case 'REMOVE_ITEM': 
+		console.log(action.id);
+			return [...state].filter(val => action.id !== val.id)
+		
 		default: 
 			return state;
 	}
