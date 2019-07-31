@@ -1,8 +1,10 @@
 import React from 'react';
-import './App.scss';
 import { connect } from 'react-redux';
 
+import './App.scss';
+
 class Size extends React.Component {
+
 	componentDidMount(){
 		fetch("https://react-shopping-cart-67954.firebaseio.com/products.json")
     .then(res => res.json())
@@ -26,14 +28,13 @@ class Size extends React.Component {
 	}
 
 	render() {
-		// const {products} = this.props;
 		return (
 			<div className="size-container">
 				<h3>Sizes:</h3>
 				<div className="sizes">
 					{
 						this.props.sizes.map(d => 
-						<button className={d.isClicked ? 'size-btn active' : 'size-btn'} onClick={() => this.handleButton(d.size)}>{d.size}</button>
+						<button className={d.isClicked ? 'active size' : 'size'} onClick={() => this.handleButton(d.size)}>{d.size}</button>
 						)
 					}
 				</div>

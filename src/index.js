@@ -1,11 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
 import * as serviceWorker from './serviceWorker';
-import {Provider} from 'react-redux';
 // import store from './App';
 import {createStore, combineReducers} from 'redux';
+import {Provider} from 'react-redux';
+
+import './index.css';
+import App from './App';
 import {products, sizes, cart} from './Reducer';
 
 const root = combineReducers({
@@ -14,9 +15,7 @@ const root = combineReducers({
 	cart
 })
 
-
 const store = createStore(root);
-
 
 ReactDOM.render(
 	<Provider store={store}>

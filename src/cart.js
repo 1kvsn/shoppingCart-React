@@ -15,36 +15,41 @@ class Cart extends React.Component {
 		return (
 			<React.Fragment>
 				<div className="drawer-main">
+					<div className="cart-close-btn">
+						<label>X</label>
+					</div>
 					<div className="drawer-header">
 						<img src="https://raw.githubusercontent.com/jeffersonRibeiro/react-shopping-cart/master/src/static/bag-icon.png" className="cart-icon"/>
+						<p>Cart</p>
 					</div>
-					<div style={{background:"yellow", borderRadius:"50%", color:"black", height:"20px", width:"20px"}}>
+					<div className="pricebubble-in-cart">
 						{this.props.cartItems.length}
 					</div>
-					<ul className="cart-items">
 					{
 						this.props.cartItems.map(item => 
 							<React.Fragment>
-								<div className="items-parent">
+								<div className="cart-items-parent">
 
-									<div className="item-image">
-										<img src={`https://raw.githubusercontent.com/jeffersonRibeiro/react-shopping-cart/master/src/static/products/${item.sku}_2.jpg`} width="80px" height="100px"/>
+									<div className="cart-item-image">
+										<img src={`https://raw.githubusercontent.com/jeffersonRibeiro/react-shopping-cart/master/src/static/products/${item.sku}_2.jpg`} />
 									</div>
 
-									<div className="items-info">
+									<div className="cart-items-info">
 										<span className="remove-item" onClick={() => this.handleRemove(item.id)}>X</span>
-										<div>{item.title}</div>
-										<div style={{color: "#AFAEAE"}}>{item.availableSizes[0]} | {item.style}</div>
-										<div style={{color: "#AFAEAE"}}>Quantity{  }</div>
+										<div className="cart-item-title">{item.title}</div>
+										<div className="cart-available-sizes">{item.availableSizes[0]} | {item.style}</div>
+										<div className="cart-item-quantity">Quantity</div>
 									</div>
 
-									<div style={{color: "yellow", fontWeight: "bold"}}>${item.price}</div>
+									<div className="cart-item-price">$ {item.price}</div>
 								</div>
-								<hr />
+								<div className="division"></div>
 							</React.Fragment>
 						)}
-					</ul>
-					<div className="checkout"><button className="drawer-btn" onClick={() => this.handleCheckout()}>Checkout</button></div>
+						
+					<div className="checkout" >
+						<button className="drawer-btn" onClick={() => this.handleCheckout()}>Checkout</button>
+					</div>
 				</div>
 			</React.Fragment>
 			)

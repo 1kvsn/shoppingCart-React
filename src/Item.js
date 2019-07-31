@@ -1,12 +1,14 @@
 import React from 'react';
-import './App.scss';
 import { connect } from 'react-redux';
+
+import './App.scss';
 
 class Item extends React.Component {
 
 	handleChange = (e) => {
 		(e.target.value === "Lowest to Highest") ? this.props.dispatch({type: "LOW_TO_HIGH"}) : this.props.dispatch({type: "HIGH_TO_LOW"})
 	}
+
 	handleAddToCart = (products) => {
 		console.log('handleAddCart', products);
 		this.props.dispatch({type: "ADD_TO_CART", products})
@@ -25,9 +27,9 @@ class Item extends React.Component {
 						<div className="sort-bar">
 							<p>16product(s) found</p>
 							<div>
-								<label for="sort-select">Order by:</label>
+								<label className="sort-select" for="sort-select">Order by</label>
 								<select onChange={(e) => this.handleChange(e)}>
-									<option value="select">select</option>
+									<option value="select">Select</option>
 									<option value="Lowest to Highest">Lowest to Highest</option>
 									<option value="Highest to Lowest">Highest to Lowest</option>
 								</select>

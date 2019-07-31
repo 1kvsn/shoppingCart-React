@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
+import {connect} from 'react-redux';
+
 import './App.scss';
 import Item from './Item.js';
 import Size from './Size.js';
-import {connect} from 'react-redux';
 import Header from './Header';
 
 
