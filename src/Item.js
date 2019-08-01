@@ -3,6 +3,10 @@ import { connect } from 'react-redux';
 
 import './App.scss';
 
+const quantity = {
+	
+}
+
 class Item extends React.Component {
 
 	handleChange = (e) => {
@@ -10,7 +14,6 @@ class Item extends React.Component {
 	}
 
 	handleAddToCart = (products) => {
-		console.log('handleAddCart', products);
 		this.props.dispatch({type: "ADD_TO_CART", products})
 	}
 	
@@ -19,62 +22,61 @@ class Item extends React.Component {
 		const filteredProd = this.props.products.filter((product, i) => {
 			return product.availableSizes.some(size => filterSizes.includes(size))
 		})
-		// console.log(filterSizes)
-		// console.log(filteredProd)
 
 		return (
-					<div className="main-container">
-						<div className="sort-bar">
-							<p>16product(s) found</p>
-							<div>
-								<label className="sort-select" for="sort-select">Order by</label>
-								<select onChange={(e) => this.handleChange(e)}>
-									<option value="select">Select</option>
-									<option value="Lowest to Highest">Lowest to Highest</option>
-									<option value="Highest to Lowest">Highest to Lowest</option>
-								</select>
-							</div>
-						</div>
-
-						<div className="item-container">
-							{
-								(filteredProd.length) ? 
-									filteredProd.map((elem, i) => {
-										// console.log('called conditional');
-										return (
-											<div className="item">
-												<img className="img-responsive" src={`https://raw.githubusercontent.com/jeffersonRibeiro/react-shopping-cart/master/src/static/products/${elem.sku}_1.jpg`} alt="tshirt" />
-												<p className="title">{elem.title}</p>
-												<hr></hr>
-												<p className="price">${elem.price}</p>
-												<span className="price-container">
-													<p className="installment">or {elem.installments} x</p>
-													<p className="installment-price">${(elem.price/elem.installments).toFixed(2)}</p>
-												</span>
-												<button onClick={() => {console.log('onclick'); this.handleAddToCart(elem)}}>Add to Cart</button>
-											</div>
-										)}
-									)
-								: 
-									this.props.products.map((elem, i) => {
-									// console.log('called second');
-									return (
-										<div className="item">
-											<img className="img-responsive" src={`https://raw.githubusercontent.com/jeffersonRibeiro/react-shopping-cart/master/src/static/products/${elem.sku}_1.jpg`} alt="tshirt" />
-											<p className="title">{elem.title}</p>
-											<hr></hr>
-											<p className="price">${elem.price}</p>
-											<span className="price-container">
-												<p className="installment">or {elem.installments} x</p>
-												<p className="installment-price">${(elem.price/elem.installments).toFixed(2)}</p>
-											</span>
-											<button onClick={() => {console.log('onclick',elem); this.handleAddToCart(elem)}}>Add to Cart</button>
-										</div>
-									)
-								})
-							}
-						</div>
+			<div className="main-container">
+				<div className="sort-bar">
+					<p>
+						{filteredProd.length || this.props.products.length} products(s) found
+					</p>
+					<div>
+						<label className="sort-select" for="sort-select">Order by</label>
+						<select onChange={(e) => this.handleChange(e)}>
+							<option value="select">Select</option>
+							<option value="Lowest to Highest">Lowest to Highest</option>
+							<option value="Highest to Lowest">Highest to Lowest</option>
+						</select>
 					</div>
+				</div>
+
+				<div className="item-container">
+					{
+						(filteredProd.length) ? 
+							filteredProd.map((elem, i) => {
+								return (
+									<div className="item">
+										<img className="img-responsive" src={`https://raw.githubusercontent.com/jeffersonRibeiro/react-shopping-cart/master/src/static/products/${elem.sku}_1.jpg`} alt="tshirt" />
+										<p className="title">{elem.title}</p>
+										<hr></hr>
+										<p className="price">${elem.price}</p>
+										<span className="price-container">
+											<p className="installment">or {elem.installments} x</p>
+											<p className="installment-price">${(elem.price/elem.installments).toFixed(2)}</p>
+										</span>
+										<button onClick={() => {console.log('onclick'); this.handleAddToCart(elem)}}>Add to Cart</button>
+									</div>
+								)}
+							)
+						: 
+							this.props.products.map((elem, i) => {
+							// console.log('called second');
+							return (
+								<div className="item">
+									<img className="img-responsive" src={`https://raw.githubusercontent.com/jeffersonRibeiro/react-shopping-cart/master/src/static/products/${elem.sku}_1.jpg`} alt="tshirt" />
+									<p className="title">{elem.title}</p>
+									<hr></hr>
+									<p className="price">${elem.price}</p>
+									<span className="price-container">
+										<p className="installment">or {elem.installments} x</p>
+										<p className="installment-price">${(elem.price/elem.installments).toFixed(2)}</p>
+									</span>
+									<button onClick={() => {console.log('onclick',elem); this.handleAddToCart(elem)}}>Add to Cart</button>
+								</div>
+							)
+						})
+					}
+				</div>
+			</div>
 		)
 	}
 }

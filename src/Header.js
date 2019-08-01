@@ -14,7 +14,8 @@ export class Header extends React.Component {
 	}
 
 	handleCartButton = () => {
-		this.setState({cartOpen: !this.state.cartOpen})
+		// this.setState({cartOpen: !this.state.cartOpen});
+		this.props.dispatch({type: "CART_STATUS", cartOpen: !this.state.cartOpen});
 	}
 
 	render() {
@@ -22,7 +23,7 @@ export class Header extends React.Component {
 			<>
 				<header className="header-container">
 					{
-						(this.state.cartOpen) ? <Cart /> : (
+						(this.props.cartOpen === true) ? <Cart /> : (
 						<button
 							className="cart-logo" 
 							onClick={() => this.handleCartButton()}>
@@ -40,7 +41,8 @@ export class Header extends React.Component {
 
 function mapStateToProps(state) {
 	return {
-		cartItems: state.cart
+		cartItems: state.cart,
+		cartOpen: state.cartOpen
 	}
 }
 

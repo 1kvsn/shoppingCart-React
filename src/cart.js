@@ -3,21 +3,27 @@ import {connect} from 'react-redux';
 
 class Cart extends React.Component {
 	
+
 	handleCheckout = () => {
-		alert("Checkout Price: " + this.props.cartItems.reduce(function (acc,obj) { return acc + obj.price;}, 0))
+		alert("Checkout Price: $" + this.props.cartItems.reduce(function (acc,obj) { return acc + obj.price;}, 0))
 	}
 
 	handleRemove = (itemId) => {
 		this.props.dispatch({type: 'REMOVE_ITEM', id: itemId})
 	}
 
-	render(){
+	handleCartCloseButton = () => {
+		this.props.dispatch({type: "CART_STATUS", cartOpen: !this.props.cartOpen})
+	}
+
+	render() {
 		return (
 			<React.Fragment>
 				<div className="drawer-main">
-					<div className="cart-close-btn">
+					<button 
+						onClick={() => this.handleCartCloseButton()} className="cart-close-btn">
 						<label>X</label>
-					</div>
+					</button>
 					<div className="drawer-header">
 						<img src="https://raw.githubusercontent.com/jeffersonRibeiro/react-shopping-cart/master/src/static/bag-icon.png" className="cart-icon"/>
 						<p>Cart</p>
@@ -25,11 +31,11 @@ class Cart extends React.Component {
 					<div className="pricebubble-in-cart">
 						{this.props.cartItems.length}
 					</div>
+					<p className="empty-notification">{!this.props.cartItems.length ? "Add some products in the cart :)" : null}</p>
 					{
-						this.props.cartItems.map(item => 
+						this.props.cartItems &&	this.props.cartItems.map(item => 
 							<React.Fragment>
 								<div className="cart-items-parent">
-
 									<div className="cart-item-image">
 										<img src={`https://raw.githubusercontent.com/jeffersonRibeiro/react-shopping-cart/master/src/static/products/${item.sku}_2.jpg`} />
 									</div>
@@ -47,7 +53,12 @@ class Cart extends React.Component {
 							</React.Fragment>
 						)}
 						
-					<div className="checkout" >
+					<div className="checkout">
+						<div className="subtotal">
+							<p>SUBTOTAL: </p>
+							<p className="subtotal-price">$ {this.props.cartItems.reduce(function (acc,obj) { return acc + obj.price;}, 0)}</p>
+
+						</div>
 						<button className="drawer-btn" onClick={() => this.handleCheckout()}>Checkout</button>
 					</div>
 				</div>
@@ -57,9 +68,10 @@ class Cart extends React.Component {
 }
 
 function mapStateToProps(state) {
-	console.log(state)
+	// console.log(state)
 	return {
-		cartItems: state.cart
+		cartItems: state.cart,
+		cartOpen: state.cartOpen
 	}
 }
 

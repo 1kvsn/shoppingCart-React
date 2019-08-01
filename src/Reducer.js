@@ -10,7 +10,6 @@ export function products(state=[], action) {
 			default:
 			return state;
 	}
-
 }
 
 export function sizes(state=[], action) {
@@ -30,16 +29,28 @@ export function sizes(state=[], action) {
 }
 
 export function cart(state = [], action) {
-	console.log('item received', state, action)
+	console.log('item received in CART reducer', state, action)
 	switch(action.type) {
 		case 'ADD_TO_CART': {
 			return [...state, action.products]
 		}
 		case 'REMOVE_ITEM': 
-		console.log(action.id);
-			return [...state].filter(val => action.id !== val.id)
+		// console.log(action.id);
+			return [...state].filter(val => action.id !== val.id);
+		case 'ADD_QUANTITY':
+			return [...state]
 		
 		default: 
+			return state;
+	}
+}
+
+export function cartStatus(state=[], action) {
+	switch (action.type) {
+		case "CART_STATUS": 
+			return action.cartOpen
+
+		default:
 			return state;
 	}
 }

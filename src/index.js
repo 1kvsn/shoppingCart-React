@@ -7,12 +7,13 @@ import {Provider} from 'react-redux';
 
 import './index.css';
 import App from './App';
-import {products, sizes, cart} from './Reducer';
+import {products, sizes, cart, cartStatus as cartOpen} from './Reducer';
 
 const root = combineReducers({
 	products,
 	sizes,
-	cart
+	cart,
+	cartOpen
 })
 
 const store = createStore(root);
