@@ -421,6 +421,16 @@ h6 {
 		align-items: center;
 		padding: 8px;
 		border-bottom: 0.5px dotted rgb(78, 48, 28);
+		position: relative;
+
+		.remove-item {
+			position: absolute;
+			right: 5%;
+			top: 10px;
+			color: black;
+			font-weight: bold;
+			cursor: pointer;
+		}
 	
 		.cart-item-price {
 			padding-left: 20px;
@@ -442,14 +452,6 @@ h6 {
 			text-align: left;
 			font-size: 14px;
 			
-			.remove-item {
-				position: relative;
-				right: -325px;
-				top: -5px;
-				color: black;
-				font-weight: bold;
-				cursor: pointer;
-			}
 			.cart-item-title {
 				font-size: 14px;
 			}

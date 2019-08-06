@@ -29,13 +29,11 @@ export function sizes(state=[], action) {
 }
 
 export function cart(state = [], action) {
-	console.log('item received in CART reducer', state, action)
 	switch(action.type) {
 		case 'ADD_TO_CART': {
 			return [...state, action.products]
 		}
 		case 'REMOVE_ITEM': 
-		// console.log(action.id);
 			return [...state].filter(val => action.id !== val.id);
 		case 'ADD_QUANTITY':
 			return [...state]

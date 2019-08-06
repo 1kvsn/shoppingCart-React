@@ -24,24 +24,29 @@ class Cart extends React.Component {
 						onClick={() => this.handleCartCloseButton()} className="cart-close-btn">
 						<label>X</label>
 					</button>
+
 					<div className="drawer-header">
 						<img src="https://raw.githubusercontent.com/jeffersonRibeiro/react-shopping-cart/master/src/static/bag-icon.png" className="cart-icon"/>
 						<p>Cart</p>
 					</div>
+
 					<div className="pricebubble-in-cart">
 						{this.props.cartItems.length}
 					</div>
+
+					{/* empty cart notification */}
 					<p className="empty-notification">{!this.props.cartItems.length ? "Add some products in the cart :)" : null}</p>
+
 					{
 						this.props.cartItems &&	this.props.cartItems.map(item => 
 							<React.Fragment>
 								<div className="cart-items-parent">
+									<span className="remove-item" onClick={() => this.handleRemove(item.id)}>X</span>
 									<div className="cart-item-image">
 										<img src={`https://raw.githubusercontent.com/jeffersonRibeiro/react-shopping-cart/master/src/static/products/${item.sku}_2.jpg`} />
 									</div>
 
 									<div className="cart-items-info">
-										<span className="remove-item" onClick={() => this.handleRemove(item.id)}>X</span>
 										<div className="cart-item-title">{item.title}</div>
 										<div className="cart-available-sizes">{item.availableSizes[0]} | {item.style}</div>
 										<div className="cart-item-quantity">Quantity</div>
@@ -68,7 +73,6 @@ class Cart extends React.Component {
 }
 
 function mapStateToProps(state) {
-	// console.log(state)
 	return {
 		cartItems: state.cart,
 		cartOpen: state.cartOpen

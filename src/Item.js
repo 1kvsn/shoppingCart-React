@@ -53,13 +53,12 @@ class Item extends React.Component {
 											<p className="installment">or {elem.installments} x</p>
 											<p className="installment-price">${(elem.price/elem.installments).toFixed(2)}</p>
 										</span>
-										<button onClick={() => {console.log('onclick'); this.handleAddToCart(elem)}}>Add to Cart</button>
+										<button onClick={() => {this.handleAddToCart(elem)}}>Add to Cart</button>
 									</div>
 								)}
 							)
 						: 
 							this.props.products.map((elem, i) => {
-							// console.log('called second');
 							return (
 								<div className="item">
 									<img className="img-responsive" src={`https://raw.githubusercontent.com/jeffersonRibeiro/react-shopping-cart/master/src/static/products/${elem.sku}_1.jpg`} alt="tshirt" />
@@ -70,7 +69,7 @@ class Item extends React.Component {
 										<p className="installment">or {elem.installments} x</p>
 										<p className="installment-price">${(elem.price/elem.installments).toFixed(2)}</p>
 									</span>
-									<button onClick={() => {console.log('onclick',elem); this.handleAddToCart(elem)}}>Add to Cart</button>
+									<button onClick={() => {this.handleAddToCart(elem)}}>Add to Cart</button>
 								</div>
 							)
 						})
