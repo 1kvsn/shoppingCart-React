@@ -213,12 +213,18 @@ h6 {
 }
 
 .shop-container {
-	display: flex;
-	max-width: 1200px;
+	// display: flex;
+	max-width: 1300px;
 	width: 100%;
 	margin: 0 auto;
 	margin-top: 70px;
+	padding: 10px;
+
+	display: grid;
+	grid-template-columns: 230px 1fr;
 }
+
+
 
 .size-container {
 	div {
@@ -232,13 +238,15 @@ h6 {
 	.sizes {
 		display: flex;
 		flex-wrap: wrap;
+		// padding: 10px;
+
 
 		.size {
-			width: 30px;
-			height: 30px;
+			width: 40px;
+			height: 40px;
 			padding: 4px;
 			border-radius: 50%;
-			font-size: 10px;
+			font-size: 12px;
 			cursor: pointer;
 			margin: 3px;
 			
@@ -275,7 +283,8 @@ h6 {
 
 .item-container {
 	display: grid;
-	grid-template-columns: repeat(4, 1fr);
+	/*grid-template-columns: repeat(4, 1fr);*/
+	grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
 
 	.item {
 		text-align: center;
@@ -506,4 +515,60 @@ h6 {
 		text-transform: uppercase;
 		letter-spacing: 1px;
 	}
+}
+
+// Media Queries for responsiveness
+
+/* 
+  ##Device = Low Resolution Tablets, Mobiles (Landscape)
+  ##Screen = B/w 481px to 767px
+*/
+
+@media (min-width: 481px) and (max-width: 767px) {
+  
+.shop-container {
+	display: grid;
+	grid-template-columns: 1fr;
+}
+
+.size-container {
+	margin: 0 auto;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	
+
+	div {
+		width: 100%;
+		margin-bottom: 30px;
+	}
+}
+  
+}
+
+/* 
+  ##Device = Most of the Smartphones Mobiles (Portrait)
+  ##Screen = B/w 320px to 479px
+*/
+
+@media (min-width: 320px) and (max-width: 480px) {
+  
+	.shop-container {
+		display: grid;
+		grid-template-columns: 1fr;
+	}
+	
+	.size-container {
+		margin: 0 auto;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		
+	
+		div {
+			width: 100%;
+			margin-bottom: 30px;
+		}
+	}
+  
 }
