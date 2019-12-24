@@ -1,32 +1,26 @@
 import React from 'react';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 
 class Cart extends React.Component {
-	
 
 	handleCheckout = () => {
-		alert("Checkout Price: $" + this.props.cartItems.reduce(function (acc,obj) { return acc + obj.price;}, 0))
+		alert("Checkout Price: $" + this.props.cartItems.reduce(function (acc, obj) { return acc + obj.price; }, 0))
 	}
 
 	handleRemove = (itemId) => {
-		this.props.dispatch({type: 'REMOVE_ITEM', id: itemId})
+		this.props.dispatch({ type: 'REMOVE_ITEM', id: itemId })
 	}
 
 	handleCartCloseButton = () => {
-		this.props.dispatch({type: "CART_STATUS", cartOpen: !this.props.cartOpen})
+		this.props.dispatch({ type: "CART_STATUS", cartOpen: !this.props.cartOpen })
 	}
 
 	render() {
 		return (
 			<React.Fragment>
 				<div className="drawer-main">
-					<button 
-						onClick={() => this.handleCartCloseButton()} className="cart-close-btn">
-						<label>X</label>
-					</button>
-
 					<div className="drawer-header">
-						<img src="https://raw.githubusercontent.com/jeffersonRibeiro/react-shopping-cart/master/src/static/bag-icon.png" className="cart-icon"/>
+						<img src="https://raw.githubusercontent.com/jeffersonRibeiro/react-shopping-cart/master/src/static/bag-icon.png" className="cart-icon" />
 						<p>Cart</p>
 					</div>
 
@@ -38,7 +32,7 @@ class Cart extends React.Component {
 					<p className="empty-notification">{!this.props.cartItems.length ? "Add some products in the cart :)" : null}</p>
 
 					{
-						this.props.cartItems &&	this.props.cartItems.map(item => 
+						this.props.cartItems && this.props.cartItems.map(item =>
 							<React.Fragment>
 								<div className="cart-items-parent">
 									<span className="remove-item" onClick={() => this.handleRemove(item.id)}>X</span>
@@ -49,7 +43,7 @@ class Cart extends React.Component {
 									<div className="cart-items-info">
 										<div className="cart-item-title">{item.title}</div>
 										<div className="cart-available-sizes">{item.availableSizes[0]} | {item.style}</div>
-										<div className="cart-item-quantity">Quantity</div>
+										<div className="cart-item-quantity">Quantity: {item.quantity}</div>
 									</div>
 
 									<div className="cart-item-price">$ {item.price}</div>
@@ -57,18 +51,22 @@ class Cart extends React.Component {
 								<div className="division"></div>
 							</React.Fragment>
 						)}
-						
+
 					<div className="checkout">
 						<div className="subtotal">
 							<p>SUBTOTAL: </p>
-							<p className="subtotal-price">$ {this.props.cartItems.reduce(function (acc,obj) { return acc + obj.price;}, 0)}</p>
+							<p className="subtotal-price">$ {this.props.cartItems.reduce(function (acc, obj) { return acc + obj.price * obj.quantity; }, 0)}</p>
 
 						</div>
 						<button className="drawer-btn" onClick={() => this.handleCheckout()}>Checkout</button>
 					</div>
 				</div>
+				<button
+					onClick={() => this.handleCartCloseButton()} className="cart-close-btn">
+					<label>X</label>
+				</button>
 			</React.Fragment>
-			)
+		)
 	}
 }
 
