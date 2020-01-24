@@ -1,20 +1,18 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import './App.scss';
+import '../App.scss';
 
-const quantity = {
-	
-}
+const IMG_URL = 'https://raw.githubusercontent.com/jeffersonRibeiro/react-shopping-cart/master/src/static/products'
 
 class Item extends React.Component {
 
 	handleChange = (e) => {
-		(e.target.value === "Lowest to Highest") ? this.props.dispatch({type: "LOW_TO_HIGH"}) : this.props.dispatch({type: "HIGH_TO_LOW"})
+		(e.target.value === "Lowest to Highest") ? this.props.dispatch({ type: "LOW_TO_HIGH" }) : this.props.dispatch({ type: "HIGH_TO_LOW" })
 	}
 
 	handleAddToCart = (products) => {
-		this.props.dispatch({type: "ADD_TO_CART", products})
+		this.props.dispatch({ type: "ADD_TO_CART", products })
 	}
 	
 	render() {
@@ -27,7 +25,7 @@ class Item extends React.Component {
 			<div className="main-container">
 				<div className="sort-bar">
 					<p>
-						{filteredProd.length || this.props.products.length} products(s) found
+						{ filteredProd.length || this.props.products.length } products(s) found
 					</p>
 					<div>
 						<label className="sort-select" for="sort-select">Order by</label>
@@ -45,7 +43,7 @@ class Item extends React.Component {
 							filteredProd.map((elem, i) => {
 								return (
 									<div className="item">
-										<img className="img-responsive" src={`https://raw.githubusercontent.com/jeffersonRibeiro/react-shopping-cart/master/src/static/products/${elem.sku}_1.jpg`} alt="tshirt" />
+										<img className="img-responsive" src={`${IMG_URL}/${elem.sku}_1.jpg`} alt="tshirt" />
 										<p className="title">{elem.title}</p>
 										<hr></hr>
 										<p className="price">${elem.price}</p>
@@ -61,9 +59,9 @@ class Item extends React.Component {
 							this.props.products.map((elem, i) => {
 							return (
 								<div className="item">
-									<img className="img-responsive" src={`https://raw.githubusercontent.com/jeffersonRibeiro/react-shopping-cart/master/src/static/products/${elem.sku}_1.jpg`} alt="tshirt" />
+									<img className="img-responsive" src={`${IMG_URL}/${elem.sku}_1.jpg`} alt="tshirt" />
 									<p className="title">{elem.title}</p>
-									<hr></hr>
+									<hr />
 									<p className="price">${elem.price}</p>
 									<span className="price-container">
 										<p className="installment">or {elem.installments} x</p>

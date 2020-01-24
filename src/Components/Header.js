@@ -1,21 +1,17 @@
 import React from 'react';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 
-import Cart from './cart';
+import Cart from './Cart';
 
 
 export class Header extends React.Component {
-	constructor() {
-		super();
 
-		this.state = {
+		state = {
 			cartOpen: false,
 		}
-	}
 
 	handleCartButton = () => {
-		// this.setState({cartOpen: !this.state.cartOpen});
-		this.props.dispatch({type: "CART_STATUS", cartOpen: !this.state.cartOpen});
+		this.props.dispatch({ type: "CART_STATUS", cartOpen: !this.state.cartOpen });
 	}
 
 	render() {

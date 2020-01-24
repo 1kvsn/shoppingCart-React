@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 
-import './App.scss';
-import Item from './Item.js';
-import Size from './Size.js';
+import '../App.scss';
+import Item from './Item';
+import Size from './Size';
 import Header from './Header';
 
 
@@ -13,7 +13,7 @@ class App extends Component {
     fetch("https://react-shopping-cart-67954.firebaseio.com/products.json")
     .then(res => res.json())
     .then(d => {
-      this.props.dispatch({type: "ADD_PRODUCTS", products: d.products})
+      this.props.dispatch({ type: "ADD_PRODUCTS", products: d.products })
     })
   }
 

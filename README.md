@@ -7,8 +7,6 @@
 - **Sort shirt  products based on price**
 - **Add/ Remove products from cart**
 - **View total quantity and price in the cart**
-- **Responsive view**
-- **Progressive Web App**
 
 ### Run
 ```

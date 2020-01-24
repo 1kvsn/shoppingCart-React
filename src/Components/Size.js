@@ -1,14 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import './App.scss';
 
 class Size extends React.Component {
 
 	componentDidMount(){
 		fetch("https://react-shopping-cart-67954.firebaseio.com/products.json")
     .then(res => res.json())
-    .then(({products}) => {
+    .then(({ products }) => {
 			let sizes = products.reduce((acc, v) => {
 				return [...acc, ...v.availableSizes]
 			}, [])
@@ -24,7 +23,7 @@ class Size extends React.Component {
 	}
 	
 	handleButton = (size) => {
-		this.props.dispatch({type: 'TOGGLE', currentSize: size})
+		this.props.dispatch({ type: 'TOGGLE', currentSize: size })
 	}
 
 	render() {
