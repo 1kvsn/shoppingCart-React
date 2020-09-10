@@ -55,7 +55,7 @@ class Cart extends React.Component {
 					<div className="checkout">
 						<div className="subtotal">
 							<p>SUBTOTAL: </p>
-							<p className="subtotal-price">$ {this.props.cartItems.reduce(function (acc, obj) { return acc + obj.price * obj.quantity; }, 0)}</p>
+							<p className="subtotal-price">$ {Math.floor(this.props.cartItems.reduce(function (acc, obj) { return acc + obj.price * obj.quantity; }, 0))}</p>
 
 						</div>
 						<button className="drawer-btn" onClick={() => this.handleCheckout()}>Checkout</button>

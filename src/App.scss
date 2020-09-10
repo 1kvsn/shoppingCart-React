@@ -480,15 +480,11 @@ h6 {
 			color: #eabf00;
 		}
 	}
-	// .division {
-	// 	width: 80%;
-	// 	margin: 0 auto;
-	// 	border: 0.3px solid rgb(209, 148, 148);
-	// }
+	
 	// Checkout section styles
 	.checkout {
-		position: absolute;
-		bottom: 1vh;
+		position: sticky;
+		bottom: 0;
 		height: 15%;
 		background: #1B1A20;
 		width: 100%;
